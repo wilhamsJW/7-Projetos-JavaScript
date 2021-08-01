@@ -62,6 +62,9 @@ function showInfo(json) {
     // pode ir até 4
     document.querySelector('.temp img').setAttribute('src', `http://openweathermap.org/img/wn/${json.tempIcon}@2x.png`);
 
+    // -90 -> pq o ponteiro não está centralizado no meio, então -90 para que ele fique centralizado
+    // veja isso apenas com o css normal sem a var setando a rotação, verá onde o ponteiro 
+    // irá ficar
     document.querySelector('.ventoPonto').style.transform = `rotate(${json.windAgle-90}deg)`;
 
     document.querySelector('.resultado').style.display = 'block';

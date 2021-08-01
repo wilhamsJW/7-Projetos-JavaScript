@@ -4,3 +4,7 @@ Primeiro projeto se chama "Bateria", pois se trata de uma bateria digital com so
 ela é acionada ao clikar nas teclas indicadas
 
 Segundo Projeto se chama "Busca de tempo metereológico" onde usei uma API -> (https://openweathermap.org/) pra buscar dados reais do tempo, onde vc coloca a cidade e e recebe em quantos graus está o tempo e a velociade do vento
+
+Terceiro Projeto se chama "Jogo da Velha", o jogo irá dizer quem é o vencedor da partida,
+se a partida deu empate, de quem é a vez a jogar, após jogo encerrado não se pode mais
+continar clicando e alterando de forma aleatória os dados do jogo.

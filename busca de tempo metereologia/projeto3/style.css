@@ -113,8 +113,12 @@ h1 {
 }
 
 .aviso {
-    color: #FFF;
+    color: red;
     padding-top: 20px;
+    font-size: large;
+    font-weight: bold;
+    width: 19rem;
+    text-align: center;
 }
 
 footer {

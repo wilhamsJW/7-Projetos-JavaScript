@@ -63,6 +63,7 @@ function itemClick(e) {
 
         // e então chamo renderSquare()
         renderSquare();
+        togglePlayer();
     }
 }
 
@@ -110,4 +111,10 @@ function renderInfo() {
     document.querySelector('.vez').innerHTML = player;
     document.querySelector('.resultado').innerHTML = warning;
 
+}
+
+// Alterna jogadores
+function togglePlayer() {
+    player = player === 'x' ? '0' : 'x';
+    renderInfo();
 }

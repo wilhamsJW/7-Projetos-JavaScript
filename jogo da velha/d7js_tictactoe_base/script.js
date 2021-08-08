@@ -18,7 +18,7 @@ var player = '';
 var warning = '';
 var playing = false;
 
-// Events
+//       *** Events *** 
 
 document.querySelector('.reset').addEventListener('click', reset)
 
@@ -36,10 +36,13 @@ document.querySelectorAll('.item').forEach(item => {
 // document.querySelector('div[data-item=a2]').addEventListener('click', itemClick);
 // document.querySelector('div[data-item=a3]').addEventListener('click', itemClick);
 
-// Functions
+
+
+
+//          *** Functions ***
 
 function itemClick(e) {
-    // console.log('ev', event)
+    // console.log('ev', e)
     // target.getAttribute -> pega o valor da div q está recebendo o click
     // precisamos disso para saber qual quadrado o user clikou
     // olhe no html como elas foram definidas e veja q é a mesma definição

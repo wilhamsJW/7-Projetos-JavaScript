@@ -104,6 +104,7 @@ function renderSquare() {
         //     item.innerHTML = '';
         // }
     }
+    checkGame()
 }
 
 function renderInfo() {
@@ -117,4 +118,17 @@ function renderInfo() {
 function togglePlayer() {
     player = player === 'x' ? '0' : 'x';
     renderInfo();
+}
+
+function checkGame () {
+    if (checkWinnerFor('x')) {
+        warning = 'O "x" Venceu!'
+        playing = false
+    } else if (checkWinnerFor('0')) {
+        warning = 'O "0" Venceu!'
+        playing = false
+    } else if (isFull()) {
+        warning = "Deu empate"
+        playing = false
+    }
 }

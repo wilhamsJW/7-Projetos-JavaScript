@@ -41,6 +41,9 @@ document.querySelectorAll('.item').forEach(item => {
 
 //          *** Functions ***
 
+// função resete() sendo chamada aqui pq é responsavel pelo reset inicial do jogo
+reset()
+
 function itemClick(e) {
     // console.log('ev', e)
     // target.getAttribute -> pega o valor da div q está recebendo o click
@@ -50,7 +53,7 @@ function itemClick(e) {
     var item = e.target.getAttribute('data-item');
     
     // Adicionando 'x' ou '0' dentro do objto
-    if (square[item] === '') {
+    if (playing && square[item] === '') {
         
         // estou pegando o objeto square na posição atual, a posição é 'item'
         // item tem o mesmo nome das chaves do objeto square, por isso consigo
@@ -104,19 +107,18 @@ function renderSquare() {
         //     item.innerHTML = '';
         // }
     }
-    checkGame()
+    checkGame();
 }
 
+// Renderiza a vez de quem é a vez de jogar e de quem ganhou
 function renderInfo() {
-
     document.querySelector('.vez').innerHTML = player;
     document.querySelector('.resultado').innerHTML = warning;
-
 }
 
 // Alterna jogadores
 function togglePlayer() {
-    player = player === 'x' ? '0' : 'x';
+    player = (player === 'x') ? '0' : 'x';
     renderInfo();
 }
 
@@ -124,11 +126,97 @@ function checkGame () {
     if (checkWinnerFor('x')) {
         warning = 'O "x" Venceu!'
         playing = false
+        console.log('venceu o x')
     } else if (checkWinnerFor('0')) {
         warning = 'O "0" Venceu!'
         playing = false
+        console.log('venceu o 0')
     } else if (isFull()) {
         warning = "Deu empate"
         playing = false
+        console.log('empate')
     }
+}
+
+function checkWinnerFor(player) {
+
+    // console.log('plauer', player)
+
+    // POssiblidades que o player pode ganhar o jogo, baseada nos dataitem das divs no html
+    var possiblidades = [
+        'a1, a2, a3',
+        'b1, b2, b3',
+        'c1, c2, c3',
+
+        'a1, b1, c1',
+        'a2, b2, c2',
+        'a3, b3, c3',
+
+        'a1, b2, c3',
+        'a3, b2, c1',
+    ];
+
+    // console.log('square', square)
+
+    for (let w in possiblidades) {
+
+        // Usando split para transformar em um array, aonde tiver vírgula será transformado em um novo array
+        let pArray = possiblidades[w].split(','); // 'a3, b2, c1'
+        // console.log('pArray', pArray)
+        // console.log('square', square)
+        // console.log('player', player)
+
+        // let vencedor = pArray.every( (option) => {
+        //     square[option] == player
+        //     // console.log('option',option)
+        //     // console.log('square[option]',square[option])
+        //     // console.log('player',player)
+        // });
+
+        var squareArray = square.map(function(obj) {
+            return Object.keys(obj).map(function(chave) {
+                return obj[chave];
+            });
+        });
+
+        console.log('squareArray', squareArray)
+
+        var vencedorX = square.filter((item) => {
+            return item == 'x'
+        })
+
+        console.log('vencedorX', vencedorX);
+
+        // A função every() retorna true ou false de acordo com a validação passada
+        var vencedor = pArray.every((option) => {
+
+            if (square[option] == player){
+                // console.log('player', player)
+                // console.log('square[option]', square[option])
+                return true
+            } else {
+                // console.log('não são iguais')
+                return false
+            }
+
+        });
+        
+        // console.log('vencedor', vencedor)
+        if (vencedor) {
+            console.log('venceu')
+            return true;
+        }
+    }
+    return false;
+};
+
+function isFull() {
+
+    for(let i in square) {
+        if (square[i] === '') {
+            return false;
+        }
+    };
+
+    return true;
 }

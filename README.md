@@ -8,3 +8,6 @@ Segundo Projeto se chama "Busca de tempo metereológico" onde usei uma API -> (h
 Terceiro Projeto se chama "Jogo da Velha", o jogo irá dizer quem é o vencedor da partida,
 se a partida deu empate, de quem é a vez a jogar, após jogo encerrado não se pode mais
 continar clicando e alterando de forma aleatória os dados do jogo.
+
+Quarto Projeto se chama "QUIZ de perguntas", se trata de quiz com perguntas e respostas com barra medindo quantas perguntas já foram, no final da avaliação terá quantas respotas
+vc acertou e a porcetagem de seus acertos informando se vc foi bom, ruim etc.. de acordo com seus acertos

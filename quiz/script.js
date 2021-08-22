@@ -28,7 +28,11 @@ function showQuestion() {
         for (let i in q.options) {
             // lembrese que precisa do += para haver a concatenação, sem isso só iria pegar o último valor
             // parseInt() está sendo usado para que fique sendo apresentado os números de 1 em diante
-            // e não apareça o zero em diante como no mundo da programação
+            // e não apareça o zero em diante como no mundo da programação, o parseInt() tranforma num inteiro
+            // até então era uma string, se vc der um typeof de "i" vc verá q é uma string,
+            // para que possa haver a concatenação precisa ser um inteiro ou número e não uma string
+            // parseInt converteu a string para número
+            // se der este console, verá q o retorno é de number console.log(typeof parseInt(i));
             optionHtml += `<div data-op="${i}" class="option"><span>${parseInt(i)+1}</span>${q.options[i]}</div>`;
         }
         document.querySelector('.options').innerHTML = optionHtml;

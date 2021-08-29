@@ -1,4 +1,5 @@
 let currentQuestion = 0;
+let correctAnswers = 0; // var que armazena os acertos do user
 
 showQuestion()
 
@@ -48,19 +49,22 @@ function showQuestion() {
 }
 
 function optionClickEvent(e) {
-    console.log('clickou em', e.target.getAttribute('data-op'));
+    
+    // Armazena a alternativa pelo índice do array que o user acabou de clikar
     let clickOption = parseInt(e.target.getAttribute('data-op'));
-
-    console.log('question[currentQuestion]', questions[currentQuestion].answer);
 
     // Note que todas as respostas são iguai ao índice de cada alternativa
     // isso facilita na hora de comarar para saber a resposta correta
     // então é só comparar a resposta com o índice, se forem iguais é a resposta correta
     // olhe o arquivo questions nessa mesma pasta e compare
     if (questions[currentQuestion].answer === clickOption) {
-        console.log("acertou");
+        // Adicionando +1 se o user acertou a respostaa
+        correctAnswers++;
     } else {
-        console.log('errou');
+        
     }
 
+    console.log('correctAnswers',correctAnswers);
+    currentQuestion++;
+    showQuestion();
 }

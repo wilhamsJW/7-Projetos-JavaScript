@@ -1,3 +1,7 @@
+// Note que todas as respostas são iguai ao índice de cada alternativa
+// isso facilita na hora de comarar para saber a resposta correta
+// então é só comparar a resposta com o índice, se forem iguais é a resposta correta
+
 let questions = [
     {
         question: 'Em qual elemento HTML nós colocamos o javascript?',

@@ -4,12 +4,11 @@ let correctAnswers = 0; // var que armazena os acertos do user
 showQuestion()
 
 function showQuestion() {
-    console.log('currentQuestion', currentQuestion);
+    
     if (questions[currentQuestion]) {
 
         // var q armazena objeto com a questões, respostas e alternativas
         let q = questions[currentQuestion];
-        console.log('q',q);
 
         document.querySelector('.scoreArea').style.display = 'none';
         document.querySelector('.questionArea').style.display = 'block';
@@ -73,7 +72,7 @@ function optionClickEvent(e) {
     // nós setamos currentQuestion++ acrescentando mais "1" e invocamos showQuestion() novamenteq agora
     // terá um novo valor em currentQuestion++
     currentQuestion++;
-    console.log('currentQuestion',currentQuestion);
+    
     // Para atualizar a tela novamente
     showQuestion();
 }

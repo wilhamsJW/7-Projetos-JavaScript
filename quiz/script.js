@@ -10,6 +10,16 @@ function showQuestion() {
         // var q armazena objeto com a questões, respostas e alternativas
         let q = questions[currentQuestion];
 
+        // Definindo a barra de progresso de acordo com as respostas certas
+        // estamos pegando "currentQuestion" e divindo por questions.length ou seja pelo tamanho total
+        // de questoes q sempre será 10, mas currentQuestion é alterado a cada aternativa escolhida do user
+        // fazendo com que currentQuestion tenha sempre um número diferente para dividir por questions.length
+        // (currentQuestion está sendo atualizada dentro da função optionClickEvent() )
+        // e aṕos essa divisao nós pegamos a porcetagem com * 100 e definimos a barra de progresso
+        // pelo "style.width" como mostra logo abaixo
+        let pct = (currentQuestion / questions.length) * 100;
+        document.querySelector('.progress--bar').style.width = `${pct}%`
+
         document.querySelector('.scoreArea').style.display = 'none';
         document.querySelector('.questionArea').style.display = 'block';
 
@@ -45,7 +55,7 @@ function showQuestion() {
         })
 
     } else {
-
+        
     }
 }
 

@@ -4,10 +4,12 @@ let correctAnswers = 0; // var que armazena os acertos do user
 showQuestion()
 
 function showQuestion() {
+    console.log('currentQuestion', currentQuestion);
     if (questions[currentQuestion]) {
 
         // var q armazena objeto com a questões, respostas e alternativas
         let q = questions[currentQuestion];
+        console.log('q',q);
 
         document.querySelector('.scoreArea').style.display = 'none';
         document.querySelector('.questionArea').style.display = 'block';
@@ -53,8 +55,8 @@ function optionClickEvent(e) {
     // Armazena a alternativa pelo índice do array que o user acabou de clikar
     let clickOption = parseInt(e.target.getAttribute('data-op'));
 
-    // Note que todas as respostas são iguai ao índice de cada alternativa
-    // isso facilita na hora de comarar para saber a resposta correta
+    // Note que todas as respostas são iguais ao índice de cada alternativa
+    // isso facilita na hora de comparar para saber a resposta correta
     // então é só comparar a resposta com o índice, se forem iguais é a resposta correta
     // olhe o arquivo questions nessa mesma pasta e compare
     if (questions[currentQuestion].answer === clickOption) {
@@ -64,7 +66,14 @@ function optionClickEvent(e) {
         
     }
 
-    console.log('correctAnswers',correctAnswers);
+    // currentQuestion++ é o que faz as perguntas serem passadas para próxima pergunta
+    // currentQuestion++ é setado no início como "0" e passado assim: questions[currentQuestion]
+    // dentro da funcção showQuestion(), questions é um obejto no arquivo questions.js, desa forma
+    // se currentQuestion++ for "0" irá mostrar a primeira pergunta, mas após passar dentro dessa função
+    // nós setamos currentQuestion++ acrescentando mais "1" e invocamos showQuestion() novamenteq agora
+    // terá um novo valor em currentQuestion++
     currentQuestion++;
+    console.log('currentQuestion',currentQuestion);
+    // Para atualizar a tela novamente
     showQuestion();
 }

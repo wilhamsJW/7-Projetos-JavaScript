@@ -5,6 +5,7 @@ showQuestion()
 
 function showQuestion() {
     
+    // console.log('currentQuestion',currentQuestion);
     if (questions[currentQuestion]) {
 
         // var q armazena objeto com a questões, respostas e alternativas
@@ -17,9 +18,12 @@ function showQuestion() {
         // (currentQuestion está sendo atualizada dentro da função optionClickEvent() )
         // e aṕos essa divisao nós pegamos a porcetagem com * 100 e definimos a barra de progresso
         // pelo "style.width" como mostra logo abaixo
-        let pct = (currentQuestion / questions.length) * 100;
+        // Math.floor apenas para arredondar os números pois alguns navegadores
+        // costuma quebrar com números cheios de casas decimais
+        let pct = Math.floor((currentQuestion / questions.length) * 100);
         document.querySelector('.progress--bar').style.width = `${pct}%`
 
+        // scoreArea  está none pq é onde irá mostrar quantas questões o user acerttou
         document.querySelector('.scoreArea').style.display = 'none';
         document.querySelector('.questionArea').style.display = 'block';
 
@@ -55,7 +59,7 @@ function showQuestion() {
         })
 
     } else {
-        
+        finishQuiz();
     }
 }
 
@@ -72,7 +76,7 @@ function optionClickEvent(e) {
         // Adicionando +1 se o user acertou a respostaa
         correctAnswers++;
     } else {
-        
+        finishQuiz();
     }
 
     // currentQuestion++ é o que faz as perguntas serem passadas para próxima pergunta
@@ -82,7 +86,29 @@ function optionClickEvent(e) {
     // nós setamos currentQuestion++ acrescentando mais "1" e invocamos showQuestion() novamenteq agora
     // terá um novo valor em currentQuestion++
     currentQuestion++;
+    console.log('currentQuestion',currentQuestion);
     
     // Para atualizar a tela novamente
     showQuestion();
+}
+
+function finishQuiz() {
+
+    // Math.floor apenas para arredondar os números pois alguns navegadores
+    // costuma quebrar com números cheios de casas decimais
+    // Aqui estamos definindo em porcetagem a qtd de acertos do user
+    // ou seja temos "correctAnswers" q aramzena as respostas corretas e
+    // questions.length que me trás o total de perguntas, então dividimos
+    // e multiplciamos por 100 obtendo assim a porcetagem de acertos do usuário
+    let points = Math.floor((correctAnswers / questions.length) * 100);
+
+    document.querySelector('.scorePct').innerHTML = `Acertou ${points}%`
+    document.querySelector('.scoreText2').innerHTML = `Você respondeu ${questions.length} questões e acertou ${correctAnswers}.`
+
+    // setando para block para que a pontuação exiba
+    document.querySelector('.scoreArea').style.display = 'block';
+    // setando para none para q as perguntas suma
+    document.querySelector('.questionArea').style.display = 'none';
+    // setando para 100% para que a barrinha de progresso vá a té o final
+    document.querySelector('.progress--bar').style.width = '100%';
 }

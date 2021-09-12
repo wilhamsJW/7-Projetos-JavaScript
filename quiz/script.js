@@ -3,6 +3,9 @@ let correctAnswers = 0; // var que armazena os acertos do user
 
 showQuestion()
 
+// Events do botão para realizar teste novamente
+document.querySelector('.scoreArea button').addEventListener('click', resetEvent)
+
 function showQuestion() {
     
     // console.log('currentQuestion',currentQuestion);
@@ -122,4 +125,12 @@ function finishQuiz() {
     document.querySelector('.questionArea').style.display = 'none';
     // setando para 100% para que a barrinha de progresso vá a té o final
     document.querySelector('.progress--bar').style.width = '100%';
+}
+
+// Função que reseta tudo, esse botão aparece no final para o suuário 
+// fazer os teste de novo
+function resetEvent() {
+    correctAnswers = 0;
+    currentQuestion = 0;
+    showQuestion();
 }

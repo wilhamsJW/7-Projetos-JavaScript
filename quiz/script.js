@@ -102,6 +102,17 @@ function finishQuiz() {
     // e multiplciamos por 100 obtendo assim a porcetagem de acertos do usuário
     let points = Math.floor((correctAnswers / questions.length) * 100);
 
+    if (points < 30) {
+        document.querySelector('.scoreText1').innerHTML = 'Estude mais um pouco. '
+        document.querySelector('.scorePct').style.color = '#FF0000'
+    } else if (points >= 30 && points < 70) {
+        document.querySelector('.scoreText1').innerHTML = 'Muito Bom. '
+        document.querySelector('.scorePct').style.color = '#FFF000'
+    } else if (points >= 70) {
+        document.querySelector('.scoreText1').innerHTML = 'Parabéns. '
+        document.querySelector('.scorePct').style.color = '#0d630d'
+    }
+
     document.querySelector('.scorePct').innerHTML = `Acertou ${points}%`
     document.querySelector('.scoreText2').innerHTML = `Você respondeu ${questions.length} questões e acertou ${correctAnswers}.`
 

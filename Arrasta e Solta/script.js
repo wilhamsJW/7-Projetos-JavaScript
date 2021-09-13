@@ -44,11 +44,13 @@ function dragOver(e) {
     // para entender melhor de um log no drop sem o preventDefault e verá q a função não executa
     // mas se colocar o preventDefault() o log dentro do drop aparecerá
     e.preventDefault();
-    // console.log('pasosu por cima');
+    // class será adicionada quando o objeto arrastado entrar na área desejada
+    e.currentTarget.classList.add('hover');
 }
 
 function dragLeave(e) {
-    
+    // class será removida quando o objeto arrastado sairr da área desejada
+    e.currentTarget.classList.remove('hover');
 }
 
 function drop(e) {

@@ -8,3 +8,19 @@ document.querySelector('.neutralArea').addEventListener('click', (e) => {
     // apenas para alterar a cor da borda quando foi clikada
     e.target.style.border = '1px solid #ff0000'
 })
+
+document.querySelectorAll('.item').forEach(item => {
+    item.addEventListener('dragstart', dragStart)
+    item.addEventListener('dragend', dragEnd)
+})
+
+// dragStart a função é disparado quando vc começa arrastar
+// e irá colocar uma opacidade no elemento para que fique nítido ao user
+// que está movendo um item e da mesma forma é dragEnd
+function dragStart(e) {
+    e.currentTarget.classList.add('dragging');
+}
+// dragEnd a função é disparado quando vc solta o click
+function dragEnd(e) {
+    e.currentTarget.classList.remove('dragging');
+}

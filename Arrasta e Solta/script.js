@@ -28,6 +28,13 @@ document.querySelectorAll('.area').forEach(area => {
     area.addEventListener('drop', drop);
 });
 
+// dragover -> Qunado o elemento entra na área selecionada
+// dragleave -> Quando o elemento sai da área desejada
+// drop -> quando o user solta o elemento
+document.querySelector('.neutralArea').addEventListener('dragover', dragOverNeutral);
+document.querySelector('.neutralArea').addEventListener('dragleave', dragLeaveNeutral);
+document.querySelector('.neutralArea').addEventListener('drop', dropNeutral);
+
 
 // dragStart a função é disparado quando vc começa arrastar
 // e irá colocar uma opacidade no elemento para que fique nítido ao user
@@ -90,4 +97,24 @@ function drop(e) {
         e.currentTarget.appendChild( ItemSelecionado );
     }
 
+}
+
+// Functions Neutral Areal - Para que os elmentos uma hora arrastados possam voltar
+// para o local de origem caso o usuário queira q eles volte
+function dragOverNeutral(e) {
+    e.preventDefault();
+    e.currentTarget.classList.add('hover');
+}
+
+function dragLeaveNeutral(e) {
+    e.currentTarget.classList.remove('hover');
+}
+// Adicionando na área principal (a que contém os elementos), os itens novamente
+// para que o user consiga trazelos de volta, o bom é que não precisa de validação
+// pq mesmo q já tenha um item ele pode colocar outros dentro, diferente do drop acima
+// que precisa de validação pq se houver um item não pode entrar outro 
+function dropNeutral(e) {
+    e.currentTarget.classList.remove('hover');
+    let ItemSelecionado = document.querySelector('.item.dragging')
+    e.currentTarget.appendChild( ItemSelecionado );
 }

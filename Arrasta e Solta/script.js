@@ -54,5 +54,18 @@ function dragLeave(e) {
 }
 
 function drop(e) {
-    console.log('soltou');
+    // É preciso remover a class hover (class q trás opacidade) pq se não
+    // após soltar o elemento no local desejado irá ficar com a opacidade
+    // estática e não é isso que eu quero, o que eu quero é que a opacidade
+    // seja um efeito que muda a cor quando o user passa o objeto por cima
+    // do local desejado, apenas para melhorar a expericenia do user
+    // e ele saber que ali é o campo correto a se soltar o objeto
+    e.currentTarget.classList.remove('hover');
+
+    // Em dragStart estou adicionando a class dragging e em dragEnd eu removo
+    // dessa forma o objeto arrastado sempre estar com a class da opacidade
+    // então para identificar o objeto selecionado basta achar a class 'dragging'
+    // dessa forma eu tenho aqui o item selecionado ou sendo arrastado pelo user
+    let dragItem = document.querySelector('.item.dragging')
+    console.log(dragItem);
 }

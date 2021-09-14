@@ -46,9 +46,16 @@ function dragOver(e) {
     // estou parando esse comportamento de negar o drop e passo a aceitar o drop
     // para entender melhor de um log no drop sem o preventDefault e verá q a função não executa
     // mas se colocar o preventDefault() o log dentro do drop aparecerá
-    e.preventDefault();
-    // class será adicionada quando o objeto arrastado entrar na área desejada
-    e.currentTarget.classList.add('hover');
+    
+    if (e.currentTarget.querySelector('.item') === null ) {
+        e.preventDefault();
+        // class será adicionada quando o objeto arrastado entrar na área desejada
+        // mas se ja tiver um item dentro a class não será adicionada, por isso
+        // q a validação é para ver se é igual a 'null' pq se é null é pq não tem item dentro
+        // então pode adicionar, mas se não for null é pq tem item dentro e não pode adicionar
+        e.currentTarget.classList.add('hover');
+    }
+    
 }
 
 function dragLeave(e) {

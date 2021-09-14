@@ -1,16 +1,16 @@
 ### 7-Projetos-JavaScript
 
 ### Primeiro projeto se chama "Bateria", 
-__pois se trata de uma bateria digital com som de verdade
-ela é acionada ao clikar nas teclas indicadas__
+Pois se trata de uma bateria digital com som de verdade
+ela é acionada ao clikar nas teclas indicadas
 
 ### Segundo Projeto se chama "Busca de tempo metereológico" 
-__Onde usei uma API -> <https://openweathermap.org/> pra buscar dados reais do tempo, onde vc coloca a cidade e e recebe em quantos graus está o tempo e a velociade do vento__
+Onde usei uma API -> <https://openweathermap.org/> pra buscar dados reais do tempo, onde vc coloca a cidade e e recebe em quantos graus está o tempo e a velociade do vento
 
 ### Terceiro Projeto se chama "Jogo da Velha", 
-__O jogo irá dizer quem é o vencedor da partida,
+O jogo irá dizer quem é o vencedor da partida,
 se a partida deu empate, de quem é a vez a jogar, após jogo encerrado não se pode mais
-continar clicando e alterando de forma aleatória os dados do jogo.__
+continar clicando e alterando de forma aleatória os dados do jogo.
 
 ### Quarto Projeto se chama "QUIZ de perguntas", 
 se trata de quiz com perguntas e respostas com barra medindo quantas perguntas já foram, no final da avaliação terá quantas respotas

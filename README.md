@@ -1,4 +1,4 @@
-### 7-Projetos-JavaScript
+##### 7-Projetos-JavaScript
 
 ### Primeiro projeto se chama "Bateria", 
 Pois se trata de uma bateria digital com som de verdade

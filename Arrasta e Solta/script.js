@@ -10,6 +10,14 @@ document.querySelector('.neutralArea').addEventListener('click', (e) => {
     // e.target.style.border = '1px solid #ff0000'
 })
 
+//      *** Código começa aqui  ***
+
+let areas = {
+    a: '',
+    b: '',
+    c: ''
+}
+
 document.querySelectorAll('.item').forEach(item => {
     item.addEventListener('dragstart', dragStart)
     item.addEventListener('dragend', dragEnd)
@@ -95,6 +103,7 @@ function drop(e) {
     // hmtl lá dentro 
     if (e.currentTarget.querySelector('.item') == null ) {
         e.currentTarget.appendChild( ItemSelecionado );
+        updateAreas();
     }
 
 }
@@ -117,4 +126,42 @@ function dropNeutral(e) {
     e.currentTarget.classList.remove('hover');
     let ItemSelecionado = document.querySelector('.item.dragging')
     e.currentTarget.appendChild( ItemSelecionado );
+    updateAreas();
+}
+
+function updateAreas() {
+    document.querySelectorAll('.area').forEach(area => {
+        // Capturando o atributo (que tbm é uma var), 'name' adicionado no hmtl (olhe o html)
+        let name = area.getAttribute('name')
+
+        // Estou entrando dentro de area.querySelector('.item') e veificando se é
+        // diferente de 'null' pq se for diferente de null quer dizer que há um item
+        // dentro da minha area (esse item foi adicionado na função drop na linha 104)
+        // é o item q o user solta dentro da area desejada
+        // então se houver esse item lá dentro eu coloco name dentro de areas
+        // assim: areas[name]
+        // area.querySelector('.item').innerHTML; -> capturando o contéduo de dentro do
+        // html, q nesse caso é 1,2 ou 3
+        // esse 'name' dentro da condicional if ele me trás o valor do atributo em questão
+        // q seria a,b ou c então quando faço isso 'areas[name]' estou acessando o objeto
+        // pela chave ou nome (tipo: digamos q name é igual a "A", então irei acessar no meu 
+        // objeto a chave com nome "A", podemos acessar pela posição tbm de 0 a 3 mas não é viável nesa situação)
+        // obtendo isto vamos dá um valor a 'areas[name]', esse valor é o "area.query....innerHTML"
+        // que captura o conteúdo do html q é 1,2 ou 3 e assim tenho o valor definido de areas  
+        if (area.querySelector('.item') != null ) {
+            areas[name] = area.querySelector('.item').innerHTML;
+        } else {
+            // Aqui estou setando o tempo todo para q sempre seja null quando não houver
+            // item dentro da minha área
+            areas[name] = null
+        }
+    });
+
+    // Monitorando para exibir msg ao user acertar a sequençia
+    if (areas.a == '1' && areas.b == '2' && areas.c == '3') {
+        document.querySelector('.areas').classList.add('correct');
+        alert('Parabéns Vc conseguiu!!!')
+    } else {
+        document.querySelector('.areas').classList.remove('correct');
+    }
 }

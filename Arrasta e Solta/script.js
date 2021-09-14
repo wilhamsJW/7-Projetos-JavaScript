@@ -18,7 +18,10 @@ document.querySelectorAll('.item').forEach(item => {
 // Toda área que for feita para arrastar e soltar, tem que ter esse 3 eventos abaixo
 // dragOver -> Função criada para detectar onde o objeto arrastado deve ficar
 // dragLeave -> detecta a saída do obejto q está sendo rastreado dentro do local q ele deve ficar
-// drop -> 
+// drop -> detecta quando o elemento sai do local desejado ou seja quando
+// o user vem com o elemento sendo arrastado e solta dentro do local desejado
+// mas na view temos 3 locais a serem soltos, então preciso saber qual deles
+// está sendo solto
 document.querySelectorAll('.area').forEach(area => {
     area.addEventListener('dragover', dragOver);
     area.addEventListener('dragleave', dragLeave);
@@ -66,6 +69,18 @@ function drop(e) {
     // dessa forma o objeto arrastado sempre estar com a class da opacidade
     // então para identificar o objeto selecionado basta achar a class 'dragging'
     // dessa forma eu tenho aqui o item selecionado ou sendo arrastado pelo user
-    let dragItem = document.querySelector('.item.dragging')
-    console.log(dragItem);
+    let ItemSelecionado = document.querySelector('.item.dragging')
+
+    // e.currentTarget.querySelector('.item') é a class q vai ser adicinada
+    // para que o elemento arrastado seja solto dentro do local desejado
+    // com o quadrado vazio é óbvio que essa class será 'null', etnão se for null
+    // eu adiciono ela com appendChild( ItemSelecionado ) passando o valor da var
+    // ItemSelecionado em 'e.currentTarget.appendChild'
+    // Dessa forma tbm impede que mais de um item seja adicionado no mesmo local
+    // pq? pq se item foi não for igual a null é sinal que já tem o meu elemento
+    // hmtl lá dentro 
+    if (e.currentTarget.querySelector('.item') == null ) {
+        e.currentTarget.appendChild( ItemSelecionado );
+    }
+
 }

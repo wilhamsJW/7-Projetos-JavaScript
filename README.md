@@ -19,3 +19,7 @@ vc acertou e a porcetagem de seus acertos informando se vc foi bom, ruim etc.. d
 ### Quinto Projeto se chama o bom e velho "arrasta e solta" ou seja "Drag e Drop", 
 que é arrastar e soltar um determindo objeto dentro de um local dentro do site. Para fazermos isso foi criado um "joguinho" para entender como isso funciona, temos uma área com 3 quadrados com numeração de 1 a 3 e esses quadrados podem ser encaixados nos seus respectivos lugares com a ordem numérica correta, e o quadrado só encaixa no local indicado e não em qq local da página.
 __Essa mesma tecnologia é usada na plataforma milionária chamada "TRELLO" onde o usuário pode arrastar e soltar e adicionar suas tarefas em locais desejados, como: "Em andamento", "Sendo Feito" e "Concluído".__
+
+### Sexto Projeto se chama "Desenhando com canvas"
+Seria mais ou menos o "Paint" da word que serve para desenhar na tela com o mouse e temos uma paleta
+de cores e podemos limpar o quadro a qq momento para fazer um novo desenho.

@@ -49,11 +49,13 @@ function mouseDownEvent() {
 }
 // Função que escuta quando o mouse se move, porém ela só vai escutar com uma condição
 // que é se canDraw tiver true
-function mouseMoveEvent() {
+function mouseMoveEvent(e) {
     // Validação para impedir que o usuário desenhe se o mouse tiver apenas se movendo
     // para desenhar o mouse tem q estar clikado
     if (canDraw) {
-        
+        // e.pageX -> mostra a posição horinzontal do meu mouse
+        // e.pageY -> mostra a posição vertical do meu mouse 
+        canDraw()
     }
 }
 // Funcção que escuta quando o user parou de clikar o botão do mouse
